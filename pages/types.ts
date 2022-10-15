@@ -1,0 +1,12 @@
+
+const generic = {
+    "activity": "Do a jigsaw puzzle",
+    "type": "recreational",
+    "participants": 1,
+    "price": 0.1,
+    "link": "https://en.wikipedia.org/wiki/Jigsaw_puzzle",
+    "key": "8550768",
+    "accessibility": 1
+}
+
+export type activity = typeof generic
