@@ -13,7 +13,7 @@ export default function HomeView({
     activity, handleClick, nextActivityIsLoading
 }: props
 ) {
-    return <div className="flex flex-col p-10 h-full">
+    return <div className="flex flex-col sm:p-10 h-full">
       <Head>
         <title>Bored? Not anymore</title>
         <meta name="description" content="A bored api view for usability" />
@@ -29,7 +29,8 @@ export default function HomeView({
         <h2 className="text-2xl m-8">
           What should you do?
         </h2>
-        <span className="my-auto self-center text-xl border-2 bg-zinc-800 border-zinc-900 w-2/3 flex justify-center p-10">
+        <span className="my-auto self-center text-xl border-2
+        bg-zinc-800 border-zinc-900 w-full sm:w-2/3 flex justify-center p-10">
           {activity.activity}
         </span>
       </main>

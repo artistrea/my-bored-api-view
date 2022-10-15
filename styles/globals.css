@@ -11,6 +11,15 @@ body {
   height: 100%;
 }
 
+html {
+  color-scheme: dark;
+}
+body {
+  color: white;
+  background: black;
+}
+
+
 #__next {
   height: 100%;
 }
@@ -19,7 +28,6 @@ ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 2em;
   font-size: 2rem;
 }
 
@@ -33,16 +41,6 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
 }
 
 .spinner-wrapper {
