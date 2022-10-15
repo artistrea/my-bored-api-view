@@ -13,34 +13,37 @@ export default function HomeView({
     activity, handleClick, nextActivityIsLoading
 }: props
 ) {
-    return <div>
+    return <div className="flex flex-col p-10">
       <Head>
         <title>Bored? Not anymore</title>
         <meta name="description" content="A bored api view for usability" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <Navbar />
+      <Navbar />
 
-      <main>
-        <h1>
+      <main className="flex flex-col">
+        <h1 className="text-3xl font-bold m-4">
           Bored? Hopefully not anymore.
         </h1>
-        <h2>
+        <h2 className="text-2xl m-8">
           What should you do?
         </h2>
-        <span>
+        <span className="self-center text-xl border-2 bg-zinc-800 border-zinc-900 w-2/3 flex justify-center p-10">
           {activity.activity}
         </span>
       </main>
       <button onClick={handleClick}
         disabled={nextActivityIsLoading}
+        className={`bg-slate-600 p-3 rounded mx-auto my-7 ${nextActivityIsLoading && "bg-slate-800 cursor-default"}`}
       >
-        Not this one
+        Another one
       </button>
       {
         nextActivityIsLoading &&
-        <span>Loading...</span>
+        <span className="mx-auto">
+          Loading...
+          </span>
       }
     </div>
 }
