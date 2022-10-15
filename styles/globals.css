@@ -35,3 +35,70 @@ a {
     background: black;
   }
 }
+
+.spinner-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.spinner {
+  position: absolute;
+  inset: 50%;
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  --animation: rotation 1s infinite ease;
+  -webkit-animation: var(--animation);
+  -moz-animation: var(--animation);
+  -o-animation: var(--animation);
+  animation: var(--animation);
+  border-right: 4px dotted white;
+  border-top: 4px dotted grey;
+  border-left: 3px dotted rgba(128, 128, 128, 0.591);
+  border-bottom: 5px dotted transparent;
+  border-radius: 100vmax;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg)
+  }
+  to {
+    -webkit-transform: rotate(359deg)
+  }
+}
+
+@-moz-keyframes rotation {
+  from {
+    -moz-transform: rotate(0deg)
+  }
+  to {
+    -moz-transform: rotate(359deg)
+  }
+}
+@-o-keyframes rotation {
+  from {
+    -o-transform: rotate(0deg)
+  }
+  to {
+    -o-transform: rotate(359deg)
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(359deg)
+  }
+}
+
+

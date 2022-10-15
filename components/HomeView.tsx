@@ -40,7 +40,7 @@ export default function HomeView({
       </button>
       {
         nextActivityIsLoading &&
-        <span>Carregando...</span>
+        <span>Loading...</span>
       }
     </div>
 }
