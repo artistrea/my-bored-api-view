@@ -43,7 +43,7 @@ export default function HomeView({
       </button>
       {
         nextActivityIsLoading &&
-        <span className="mx-auto absolute top-1/3 left-1/2 -translate-x-1/2">
+        <span className="mx-auto absolute top-2/3 sm:top-1/3 left-1/2 -translate-x-1/2">
           Loading...
           </span>
       }
