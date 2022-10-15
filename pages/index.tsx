@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { MouseEventHandler, useEffect, useRef } from 'react'
-import type { activity } from './types'
+import type { activity } from '../services/types'
 import { useState } from 'react'
 import { api } from '../services/api'
 import HomeView from '../components/HomeView'

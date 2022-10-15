@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { MouseEventHandler } from "react";
-import { activity } from "../pages/types";
+import { activity } from "../services/types";
 import Navbar from "./Navbar";
 
 interface props {
