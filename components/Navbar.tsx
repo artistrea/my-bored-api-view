@@ -6,7 +6,7 @@ export default function Navbar()  {
   const [openNav, setOpenNav] = useState(false)
 
   return (
-    <nav className="max-w-full overflow-scroll">
+    <nav className="max-w-full">
       <span className="block sm:hidden text-3xl p-5 m-1 cursor-pointer
         bg-zinc-900 rounded w-max text-center items-center"
         onClick={() => setOpenNav(s => !s)}
