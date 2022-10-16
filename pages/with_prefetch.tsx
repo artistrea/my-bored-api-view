@@ -24,8 +24,9 @@ const Home: NextPage<homeProps> = ({ activities }) => {
     if (nextActivityRef.current === activity) {
       setNextActivityIsLoading(true)
 
-      // await here so that this prefetch doesn't overwrite previous prefetch
-      // before the interval resolves, and setActivity can be called
+      // await here so that current prefetch doesn't overwrite
+      // previous prefetch before the interval resolves,
+      // and setActivity is called
       await new Promise<void>((resolve) => {
         // Loop while prefetch hasn't resolved
         const interval = setInterval(() => {
