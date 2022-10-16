@@ -12,7 +12,8 @@ const Home: NextPage<activity> = (firstActivity) => {
 
   const handleClick : MouseEventHandler<HTMLButtonElement> = (_e) => {
     setNextActivityIsLoading(true)
-    api.get("").then((re) => {
+
+    api.get('').then((re) => {
       setActivity(re.data)
       setNextActivityIsLoading(false)
     })
@@ -28,10 +29,8 @@ const Home: NextPage<activity> = (firstActivity) => {
 }
 
 export async function getServerSideProps() {
-  const res = await api.get("")
-
   return {
-    props: res.data
+    props: (await api.get('')).data
   }
 }
 

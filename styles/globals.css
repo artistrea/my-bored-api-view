@@ -58,6 +58,7 @@ a {
 .spinner {
   position: absolute;
   inset: 50%;
+  translate: -50% -50%;
   height: 100px;
   width: 100px;
   margin: 0 auto;

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { MouseEventHandler, useEffect, useRef } from 'react'
+import { MouseEventHandler, useRef } from 'react'
 import type { activity } from '../services/types'
 import { useState } from 'react'
 import { api } from '../services/api'
@@ -12,42 +12,29 @@ interface homeProps {
 
 const Home: NextPage<homeProps> = ({ activities }) => {
   const  [firstActivity, secondActivity] = activities
-  const nextActivityRef = useRef(secondActivity)
-  const [nextActivityIsLoading, setNextActivityIsLoading] = useState(false)
   const [activity, setActivity] = useState(firstActivity)
-
-  useEffect(() => {
-    if (nextActivityIsLoading) {
-      
-      const interval = setInterval(() => {
-        if (nextActivityRef.current === activity) return;
-        clearInterval(interval)
-        setActivity(nextActivityRef.current)
-        setNextActivityIsLoading(false)
-      }, 100)
-
-      api.get("").then((re) => {
-        nextActivityRef.current = re.data
-      })
-      
-      return () => {
-        clearInterval(interval)
-      }
-    }
-  }, [nextActivityIsLoading])
+  const nextActivityRef = useRef(secondActivity)  // Does not cause rerender
+  const [nextActivityIsLoading, setNextActivityIsLoading] = useState(false)
 
   const handleClick : MouseEventHandler<HTMLButtonElement> = (_e) => {
     if (nextActivityRef.current === activity) {
       setNextActivityIsLoading(true)
-      return;
+
+      // Loop while next activity is still the same as current
+      const interval = setInterval(() => {
+        if (nextActivityRef.current === activity) return;
+
+        clearInterval(interval)
+        setActivity(nextActivityRef.current)
+        setNextActivityIsLoading(false)
+      }, 100)
+    } else {
+      setActivity(nextActivityRef.current)
     }
 
-    setActivity(nextActivityRef.current)
-
-    api.get("").then((re) => {
+    api.get('').then((re) => {
       nextActivityRef.current = re.data
     })
-
   }
 
   return (
@@ -60,14 +47,11 @@ const Home: NextPage<homeProps> = ({ activities }) => {
 }
 
 export async function getServerSideProps() {
-  const promise1 = api.get("")
-  const promise2 = api.get("")
+  const promises = [api.get(''), api.get('')]
 
-  
-    
   return  {
     props: {
-      activities: (await Promise.all([promise1, promise2])).map((r) => r.data)
+      activities: (await Promise.all(promises)).map((r) => r.data)
     }
   }
 }
