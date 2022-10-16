@@ -45,7 +45,12 @@ export default function HomeView({
         nextActivityIsLoading &&
         <span className="mx-auto absolute top-2/3 sm:top-1/3 left-1/2 -translate-x-1/2">
           Loading...
-          </span>
+        </span>
       }
+      <footer className="flex items-center justify-center border-cyan-800 border-t-2 h-16 w-screen sm:-m-10 mt-16 sm:mt-16">
+        <a href="https://github.com/artistrea/my-bored-api-view" target="_blank" rel="noreferrer"
+          className="text-violet-300 underline decoration-2 decoration-cyan-600 rounded-full p-8"
+        >github repo</a>
+      </footer>
     </div>
 }
