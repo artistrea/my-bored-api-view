@@ -16,24 +16,34 @@ const Home: NextPage<homeProps> = ({ activities }) => {
   const nextActivityRef = useRef(secondActivity)  // Does not cause rerender
   const [nextActivityIsLoading, setNextActivityIsLoading] = useState(false)
 
-  const handleClick : MouseEventHandler<HTMLButtonElement> = (_e) => {
+  const handleClick : MouseEventHandler<HTMLButtonElement> = async (_e) => {
+    // prefetch
+    const nextValueApiRequest = api.get('')
+
+    // if previous prefetch hasn't resolved yet
     if (nextActivityRef.current === activity) {
       setNextActivityIsLoading(true)
 
-      // Loop while next activity is still the same as current
-      const interval = setInterval(() => {
+      // await here so that this prefetch doesn't overwrite previous prefetch
+      // before the interval resolves, and setActivity can be called
+      await new Promise<void>((resolve) => {
+        // Loop while prefetch hasn't resolved
+        const interval = setInterval(() => {
         if (nextActivityRef.current === activity) return;
 
         clearInterval(interval)
         setActivity(nextActivityRef.current)
         setNextActivityIsLoading(false)
+        resolve()
       }, 100)
+      })
     } else {
       setActivity(nextActivityRef.current)
     }
 
-    api.get('').then((re) => {
-      nextActivityRef.current = re.data
+    // set next value from prefetch
+    nextValueApiRequest.then((res) => {
+      nextActivityRef.current = res.data
     })
   }
 
