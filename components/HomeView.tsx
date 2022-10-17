@@ -47,7 +47,7 @@ export default function HomeView({
           Loading...
         </span>
       }
-      <footer className="flex items-center justify-center border-cyan-800 border-t-2 h-16 w-full sm:-m-10 mt-16 sm:mt-16">
+      <footer className="flex items-center justify-center border-cyan-800 border-t-2 h-16 w-full mt-16 sm:mt-16">
         <a href="https://github.com/artistrea/my-bored-api-view" target="_blank" rel="noreferrer"
           className="text-violet-300 underline decoration-2 decoration-cyan-600 rounded-full p-8"
         >github repo</a>
