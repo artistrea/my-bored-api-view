@@ -37,7 +37,7 @@ export default function HomeView({
       <button onClick={handleClick}
         disabled={nextActivityIsLoading}
         className={`bg-slate-600 p-3 rounded mx-auto
-        my-20 hover:shadow-slate-300 hover:shadow-2xl ${nextActivityIsLoading && "bg-slate-800 cursor-default"}`}
+        my-20 shadow-slate-300 shadow-2xl ${nextActivityIsLoading && "bg-slate-800 cursor-default"}`}
       >
         Another one
       </button>
